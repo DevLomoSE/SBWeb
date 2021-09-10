@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${titulo}">Index</title>
+</head>
+<body>
+  <p th:text="${encabezado}">Index HDTPM!</p>
+  <table th:if="${not usuarios.isEmpty()}">
+      <thead>
+      <tr>
+          <th>Nombre</th>
+          <th>Apellido</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="usuario: ${usuarios}">
+          <th th:text="${usuario.nombre}"></th>
+          <th th:text="${usuario.apellido}"></th>
+      </tr>
+      </tbody>
+  </table>
+</body>
+</html>

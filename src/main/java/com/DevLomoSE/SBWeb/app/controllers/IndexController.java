@@ -1,17 +1,22 @@
 package com.DevLomoSE.SBWeb.app.controllers;
 
+import com.DevLomoSE.SBWeb.app.domain.Usuario;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * IndexController at: src/main/java/com/DevLomoSE/SBWeb/app/controllers
  * Created by @DevLomoSE at 10/9/21 15:07.
  */
 @Controller
-@RequestMapping
+@RequestMapping("/app")
 public class IndexController {
 
     @GetMapping({"/index", "/"})
@@ -26,6 +31,41 @@ public class IndexController {
         modelAndView.addObject("encabezado", "Hola Spring");
         modelAndView.setViewName("index");
         return modelAndView;
+    }
+
+    @GetMapping("/perfil")
+    public String showPerfil(Model model){
+
+        Usuario usuario = new Usuario();
+        usuario.setNombre("Jonathan Cristobal");
+        usuario.setApellido("Guzmán Guadarrama");
+
+        model.addAttribute("usuario", usuario);
+        model.addAttribute("titulo", false);
+
+        return "usuarios/perfil";
+    }
+
+    @GetMapping("/usuarios")
+    public String showUsuarios(Model model){
+
+        //model.addAttribute("usuarios", usuarios);
+        model.addAttribute("titulo", "Usuarios");
+
+        return "usuarios/lista";
+    }
+
+    @ModelAttribute("usuarios")
+    public List<Usuario> populateUserS(){
+        List<Usuario> usuarios = new ArrayList<>();
+
+        Usuario usuario = new Usuario();
+        usuario.setNombre("Jonathan Cristobal");
+        usuario.setApellido("Guzmán Guadarrama");
+
+        usuarios.add(usuario);
+
+        return usuarios;
     }
 
 }

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:if="${titulo}">Perfil</title>
+    <title th:if="${!titulo}">Usuario</title>
+</head>
+<body>
+  <h1>Perfil de usuario</h1>
+  <h3>Nombre: <smal th:text="${usuario.nombre}">nombre</smal></h3>
+  <h3>Apellidos: <smal th:text="${usuario.apellido}">apellido</smal></h3>
+</body>
+</html>
