@@ -8,6 +8,8 @@ public class SbWebApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SbWebApplication.class, args);
+
+		System.out.println("init");
 	}
 
 }
