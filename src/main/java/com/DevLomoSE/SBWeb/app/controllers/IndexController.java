@@ -21,7 +21,7 @@ import java.util.Locale;
 @RequestMapping("/app")
 public class IndexController {
 
-    @GetMapping({"/index", "/"})
+    @GetMapping({"/", "/index"})
     public String showIndex(Model model){
         model.addAttribute("titulo", "Index Controller");
         return "index";
