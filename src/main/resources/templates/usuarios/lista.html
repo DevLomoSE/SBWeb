@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title th:text="${titulo}">Title</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
 </head>
 <body>
     <p th:if="${usuarios.isEmpty()}">No hay usuarios registrados!</p>

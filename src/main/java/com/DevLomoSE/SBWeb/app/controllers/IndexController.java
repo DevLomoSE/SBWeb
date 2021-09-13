@@ -1,6 +1,7 @@
 package com.DevLomoSE.SBWeb.app.controllers;
 
 import com.DevLomoSE.SBWeb.app.domain.Usuario;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,9 +22,18 @@ import java.util.Locale;
 @RequestMapping("/app")
 public class IndexController {
 
+    @Value("${indexController.index.titulo}")
+    private String tituloIndex;
+
+    @Value("${indexController.listar.titulo}")
+    private String tituloListado;
+
+    @Value("${indexController.perfil.titulo}")
+    private String tituloDetalle;
+
     @GetMapping({"/", "/index"})
     public String showIndex(Model model){
-        model.addAttribute("titulo", "Index Controller");
+        model.addAttribute("titulo", this.tituloIndex);
         return "index";
     }
 
@@ -43,7 +53,7 @@ public class IndexController {
         usuario.setApellido("Guzmán Guadarrama");
 
         model.addAttribute("usuario", usuario);
-        model.addAttribute("titulo", false);
+        model.addAttribute("titulo", this.tituloDetalle);
 
         return "usuarios/perfil";
     }
@@ -52,20 +62,21 @@ public class IndexController {
     public String showUsuarios(Model model){
 
         //model.addAttribute("usuarios", usuarios);
-        model.addAttribute("titulo", "Usuarios");
+        model.addAttribute("titulo", this.tituloListado);
 
         return "usuarios/lista";
     }
 
     @GetMapping("/usuario")
-    public String retrieveUser(@RequestParam String texto, Model model){
+    public String retrieveUser(@RequestParam(required = false) String texto, Model model){
         model.addAttribute("titulo", "Ver Usuario");
-        model.addAttribute("encabezado", "Detalle del usuario");
+        model.addAttribute("encabezado", this.tituloListado);
         model.addAttribute("request_param", texto);
 
         return "usuarios/detalle";
     }
 
+    // SECCION DE METODOS USADOS PARA ESTE CONTROLADOR
     @ModelAttribute("usuarios")
     public List<Usuario> populateUserS(){
         List<Usuario> usuarios = new ArrayList<>();
