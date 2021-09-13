@@ -7,8 +7,9 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
 </head>
 <body>
-    <p th:if="${usuarios.isEmpty()}">No hay usuarios registrados!</p>
-    <p th:unless="${usuarios.isEmpty()}">Si hay usuarios registados!</p>
+    <h1 class="color-blue" th:text="${titulo}"></h1>
+    <h2 class="color-pruple" th:if="${usuarios.isEmpty()}">No hay usuarios registrados!</h2>
+    <h2 class="color-pruple" th:unless="${usuarios.isEmpty()}">Si hay usuarios registados!</h2>
     <table th:unless="${usuarios.isEmpty()}">
         <thead>
             <tr>
