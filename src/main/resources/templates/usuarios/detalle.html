@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${titulo}">titulo</title>
+</head>
+<body>
+    <h1 th:text="${request_param}"></h1>
+    <br>
+    <h1 th:text="${encabezado}">Detalle del usuario</h1>
+    <h3>Nombre: <smal th:text="${usuario.nombre}">nombre</smal></h3>
+    <h3>Apellidos: <smal th:text="${usuario.apellido}">apellido</smal></h3>
+</body>
+</html>
